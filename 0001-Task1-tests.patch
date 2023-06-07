@@ -1,0 +1,75 @@
+From 36b1cc5c74b880fd7a8498e28a18b9918164d492 Mon Sep 17 00:00:00 2001
+From: "Hiram A. Lopez" <hiram.lopezr1505@outlook.com>
+Date: Wed, 7 Jun 2023 16:36:03 -0600
+Subject: [PATCH] Task1 tests
+
+Added the test unit for the getRatio function
+---
+ __pycache__/client3.cpython-310.pyc | Bin 0 -> 1184 bytes
+ client3.py                          |   2 +-
+ client_test.py                      |   4 ++++
+ 3 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 __pycache__/client3.cpython-310.pyc
+
+diff --git a/__pycache__/client3.cpython-310.pyc b/__pycache__/client3.cpython-310.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..511ae830173feb6391209439518c567581ec6daf
+GIT binary patch
+literal 1184
+zcmYjRPjA~c6elIhmK?iH(ln{p9k>GB=3z-X?65BA)~<2Zor*R=22Ajv$>MXOL>3*A
+zZV}HpY~BZPj{7G247~2tdrv#<QBH!Acz^Zu_}-5Xl&w~S;F_{O1VQazXMDIKG@c>p
+ze~<|xXhGtIq%o~*FZP8OGvUX9U?TX7#5GY9b(D1oMR@9|-ynhp1T#9LUGnSGcnQe7
+z3I0iIehb+AHqbe}B$xD(&X=8xS0a*=cokMK`d)koYH(*pdn{gy@5bx#25i78tUV!c
+zPeiZ=cVQhi25g<oC?#j#qPGEcSQSfcg1p%#Gw<r#13?e4g9FlOy~A$E%gHCl#*B8h
+zw+or2#j(_8=kcS*kG9Xopw6G>;=A83^7oXG4C!VCs4=8nB>fy&M5dUvO)jW$n%5@6
+z$5ZKrSJ~{w_NU&|-ykBmPcGP$I%~=X4C|>)zTvNw6ypqdS`^$I11|vt2>vE5#-O>8
+z{0K@=slf;?Qj?BkUK(x#ZDe+8>qd@}elBb<Qh5doJJqM}Jgl%oZ7?WgYC3@p&c@P!
+za&8;p56L1v!q|nXTyuXDwS?loXS+MSLk&vz4iEPBdtI50hfo^bdy$);#{J$vs`Lmp
+zPe#LRQ@@2xgK0Lu>SaZaQD1M3&TaDuOc%?2Rh5f5brYHAg>)Hr6Sr!iBXb2^FQ+@I
+zApQsygqRA7qZAngct-!EQ}o;?2%SH9z+Zsjh)gcI9Pp~2B;{!-uJk@v?gA&go4?6*
+zE=%4&=Mzwp=bD$&ILPH&5L<{-<7bEWo>EeEJX^m?cCGX)R2Iy&VMFY0-<|vgS~^7L
+zI&)jCRNs?inC4}YOg?+<a2Ncc=BeSIBl0^B^_Lv+s$_K#YMn_~<-<7Z|L}a*`rW-B
+zJ8jEOv@C5+VOMe(-x{l;$opFga8$LiwS^rAuMhY3f3fssh3QQRWjcf;u`I`nw*lrj
+z0!tGc;7AB<>(^Q8m_?2NkHKplrp7V_sj#(bVsu=qYShYgS<R1fkArgWM>R9m=#}OJ
+xh};ON1x`<fINb$&?=C`riY#1nC^4V;p&vHFXxZb`^BDS;k=E(Q9(&Kc{{aN|FA4wv
+
+literal 0
+HcmV?d00001
+
+diff --git a/client3.py b/client3.py
+index 9e9d7a6..c284f08 100644
+--- a/client3.py
++++ b/client3.py
+@@ -43,7 +43,7 @@ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+     """ ------------- Update this function ------------- """
+     if (price_b == 0):
+-        return
++        raise ValueError("Division by zero is not allowed.")
+     return price_a/price_b
+ 
+ 
+diff --git a/client_test.py b/client_test.py
+index af2bf26..6f6ff42 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -1,5 +1,6 @@
+ import unittest
+ from client3 import getDataPoint
++from client3 import getRatio
+ 
+ class ClientTest(unittest.TestCase):
+   def test_getDataPoint_calculatePrice(self):
+@@ -18,6 +19,9 @@ class ClientTest(unittest.TestCase):
+ 
+ 
+   """ ------------ Add more unit tests ------------ """
++  def test_getRatio_division_by_zero(self):
++    with self.assertRaises(ValueError):
++      getRatio(100, 0)
+ 
+ 
+ 
+-- 
+2.41.0.windows.1
+
