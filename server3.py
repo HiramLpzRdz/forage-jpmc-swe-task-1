@@ -31,7 +31,7 @@ from datetime import timedelta, datetime
 from random import normalvariate, random
 from socketserver import ThreadingMixIn
 
-import dateutil.parser
+from dateutil.parser import parse
 
 ################################################################################
 #
@@ -160,7 +160,7 @@ def read_csv():
     """ Read a CSV or order history into a list. """
     with open('test.csv', 'rt') as f:
         for time, stock, side, order, size in csv.reader(f):
-            yield dateutil.parser.parse(time), stock, side, float(order), int(size)
+            yield parse(time), stock, side, float(order), int(size)
 
 
 ################################################################################
